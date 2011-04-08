@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b English:
+  = @sentence.english
+%p
+  %b Foreign:
+  = @sentence.foreign
+%p
+  %b Level:
+  = @sentence.level
+
+= link_to 'Edit', edit_sentence_path(@sentence)
+\|
+= link_to 'Back', sentences_path
