@@ -21,6 +21,10 @@ class LevelsController < ApplicationController
     end
   end
 
+  def test
+    @level = Level.find(params[:id])
+  end
+
   # GET /levels/new
   # GET /levels/new.xml
   def new

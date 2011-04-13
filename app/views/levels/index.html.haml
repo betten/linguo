@@ -11,6 +11,7 @@
     %tr
       %td= level.name
       %td= link_to 'Show', level
+      %td= link_to 'Test', test_level_path(level)
       %td= link_to 'Edit', edit_level_path(level)
       %td= link_to 'Destroy', level, :confirm => 'Are you sure?', :method => :delete
 

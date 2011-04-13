@@ -1,0 +1,77 @@
+%p
+  = @level.name
+  level#test
+
+#sentences
+  - @level.sentences.each do |sentence|
+    .sentence
+      .english= sentence.english
+      .foreign= sentence.foreign
+
+%input#input
+
+.back= link_to 'Back to all levels', levels_path
+
+:javascript
+  $j = jQuery;
+
+  // http://yelotofu.com/2008/08/jquery-shuffle-plugin/
+  (function($){
+    $.fn.shuffle = function() {
+      return this.each(function(){
+        var items = $(this).children();
+        return (items.length)
+          ? $(this).html($.shuffle(items))
+          : this;
+      });
+    }
+   
+    $.shuffle = function(arr) {
+      for(
+        var j, x, i = arr.length; i;
+        j = parseInt(Math.random() * i),
+        x = arr[--i], arr[i] = arr[j], arr[j] = x
+      );
+      return arr;
+    }
+  })(jQuery);
+
+  $j(function() {
+    $j('.back').hide();
+    runTest();
+  });
+
+  var runTest = function() {
+    $j('#sentences').shuffle();
+    var sentences = $j('.sentence');
+    sentences.find('.foreign').hide();
+    sentences.hide();
+    var current = sentences.first();
+    current.show();
+    var failed = false;
+    $j('#input').val('').focus().keypress(function(e) {
+      if(e.keyCode === 13) {
+        if(current.find('.foreign').text() === $j(this).val()) {
+          current = current.hide().next('.sentence');
+          if(!current.length) {
+            if(failed) {
+              alert('one or more sentences were incorrect -- have another go');
+            }
+            else {
+              alert('success!');
+              $j('.back').show();
+            }
+            $j(this).unbind('keypress');
+            runTest();
+            return;
+          }
+          current.show();
+        }
+        else {
+          failed = true;
+          alert(current.find('.foreign').text());
+        }
+        $j(this).val('').focus();
+      }
+    });
+  };

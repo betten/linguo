@@ -1,7 +1,11 @@
+%p
+  = @level.name
+  sentence#edit
+
 %h1 Editing sentence
 
 = render 'form'
 
-= link_to 'Show', @sentence
+= link_to "Back to #{@level.name}", @level
 \|
-= link_to 'Back', sentences_path
+= link_to 'Show', level_sentence_path(@level, @sentence)

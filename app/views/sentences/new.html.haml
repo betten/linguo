@@ -1,5 +1,9 @@
+%p
+  = @level.name
+  sentence#new
+
 %h1 New sentence
 
 = render 'form'
 
-= link_to 'Back', sentences_path
+= link_to "Back to #{@level.name}", @level

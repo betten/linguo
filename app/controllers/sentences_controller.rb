@@ -1,4 +1,9 @@
 class SentencesController < ApplicationController
+
+  before_filter do
+    @level = Level.find(params[:level_id])
+  end
+
   # GET /sentences
   # GET /sentences.xml
   def index
@@ -41,10 +46,11 @@ class SentencesController < ApplicationController
   # POST /sentences.xml
   def create
     @sentence = Sentence.new(params[:sentence])
+    @sentence.level = @level
 
     respond_to do |format|
       if @sentence.save
-        format.html { redirect_to(@sentence, :notice => 'Sentence was successfully created.') }
+        format.html { redirect_to([@level, @sentence], :notice => 'Sentence was successfully created.') }
         format.xml  { render :xml => @sentence, :status => :created, :location => @sentence }
       else
         format.html { render :action => "new" }
@@ -60,7 +66,7 @@ class SentencesController < ApplicationController
 
     respond_to do |format|
       if @sentence.update_attributes(params[:sentence])
-        format.html { redirect_to(@sentence, :notice => 'Sentence was successfully updated.') }
+        format.html { redirect_to([@level, @sentence], :notice => 'Sentence was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,7 +82,7 @@ class SentencesController < ApplicationController
     @sentence.destroy
 
     respond_to do |format|
-      format.html { redirect_to(sentences_url) }
+      format.html { redirect_to(@level) }
       format.xml  { head :ok }
     end
   end

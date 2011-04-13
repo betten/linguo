@@ -2,6 +2,10 @@ Lingo::Application.routes.draw do
 
   resources :levels do
     resources :sentences
+
+    member do
+      get 'test'
+    end
   end
 
   # The priority is based upon order of creation:

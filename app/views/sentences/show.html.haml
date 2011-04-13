@@ -1,15 +1,16 @@
 %p#notice= notice
 
 %p
+  = @level.name
+  sentence#show
+
+%p
   %b English:
   = @sentence.english
 %p
   %b Foreign:
   = @sentence.foreign
-%p
-  %b Level:
-  = @sentence.level
 
-= link_to 'Edit', edit_sentence_path(@sentence)
+= link_to "Back to #{@level.name}", @level
 \|
-= link_to 'Back', sentences_path
+= link_to 'Edit', edit_level_sentence_path(@level, @sentence)
