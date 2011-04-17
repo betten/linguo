@@ -60,5 +60,3 @@
         };
         
     })(jQuery);
-    
-    $('input').autoGrowInput();
