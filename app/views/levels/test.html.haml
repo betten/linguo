@@ -12,6 +12,9 @@
 
 .back= link_to 'Back to all levels', levels_path
 
+- content_for :javascripts do
+  = javascript_include_tag 'jquery-autogrowinput.js'
+
 :javascript
   $j = jQuery;
 
@@ -37,6 +40,10 @@
   })(jQuery);
 
   $j(function() {
+    $j('#input').autoGrowInput({
+      comfortZone: 10,
+      minWidth: 170
+    });
     $j('.back').hide();
     runTest();
   });

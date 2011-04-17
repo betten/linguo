@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lingo</title>
+  <title>Linguo</title>
   <%= stylesheet_link_tag :all %>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <%= javascript_include_tag :defaults %>
+  <%= yield :javascripts =>
   <%= csrf_meta_tag %>
 </head>
 <body>
