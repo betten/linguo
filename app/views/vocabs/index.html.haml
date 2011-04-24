@@ -1,0 +1,23 @@
+%h1 Listing vocabs
+
+%table
+  %tr
+    %th English
+    %th Foreign
+    %th Level
+    %th
+    %th
+    %th
+
+  - @vocabs.each do |vocab|
+    %tr
+      %td= vocab.english
+      %td= vocab.foreign
+      %td= vocab.level
+      %td= link_to 'Show', vocab
+      %td= link_to 'Edit', edit_vocab_path(vocab)
+      %td= link_to 'Destroy', vocab, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Vocab', new_vocab_path

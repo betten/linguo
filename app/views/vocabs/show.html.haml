@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @level.name
+
+%h1 Listing vocabs
+
+%table
+  %tr
+    %th English
+    %th Foreign
+    %th
+    %th
+    %th
+
+  - @level.vocabs.each do |vocab|
+    %tr
+      %td= vocab.english
+      %td= vocab.foreign
+      -#%td= link_to 'Show', [@level, vocab]
+      %td= link_to 'Edit', edit_level_vocab_path(@level, vocab)
+      %td= link_to 'Destroy', [@level, vocab], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Back to all Levels', levels_path
+\|
+= link_to 'Edit Level', edit_level_path(@level)
+\|
+= link_to 'Test', test_level_path(@level)
+\|
+= link_to 'New Vocab', new_level_vocab_path(@level)

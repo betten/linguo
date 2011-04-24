@@ -1,0 +1,11 @@
+%p
+  = @level.name
+  vocab#edit
+
+%h1 Editing vocab
+
+= render 'form'
+
+= link_to "Back to #{@level.name}", @level
+\|
+= link_to 'Show', level_vocab_path(@level, @vocab)

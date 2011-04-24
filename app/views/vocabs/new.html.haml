@@ -1,0 +1,11 @@
+%p#notice= notice
+
+%p
+  = @level.name
+  vocab#new
+
+%h1 New vocab
+
+= render 'form'
+
+= link_to "Back to #{@level.name}", @level

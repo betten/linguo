@@ -1,0 +1,24 @@
+= form_for [@level, @vocab] do |f|
+  -if @vocab.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@vocab.errors.count, "error")} prohibited this vocab from being saved:"
+      %ul
+        - @vocab.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :english
+    = f.text_field :english
+  .field
+    = f.label :foreign
+    = f.text_field :foreign
+  .actions
+    = f.submit 'Save'
+
+- content_for :javascripts do
+  :javascript
+    var $j = jQuery;
+
+    $j(function() {
+      $j('#vocab_english').focus();
+    });

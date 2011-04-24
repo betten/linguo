@@ -16,13 +16,25 @@ class LevelsController < ApplicationController
     @level = Level.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {
+        if @level.is_vocab?
+          render 'vocabs/show'
+        else
+          render 'sentences/show'
+        end
+      }
       format.xml  { render :xml => @level }
     end
   end
 
   def test
     @level = Level.find(params[:id])
+
+    if @level.is_vocab?
+      @testing = @level.vocab
+    else
+      @testing = @level.sentences
+    end
   end
 
   # GET /levels/new

@@ -9,7 +9,10 @@
 
   - @levels.each do |level|
     %tr
-      %td= level.name
+      %td
+        = level.name
+        - if level.is_vocab
+          (vocab)
       %td= link_to 'Show', level
       %td= link_to 'Test', test_level_path(level)
       %td= link_to 'Edit', edit_level_path(level)

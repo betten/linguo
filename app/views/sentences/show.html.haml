@@ -1,16 +1,33 @@
 %p#notice= notice
 
 %p
+  %b Name:
   = @level.name
-  sentence#show
 
-%p
-  %b English:
-  = @sentence.english
-%p
-  %b Foreign:
-  = @sentence.foreign
+%h1 Listing sentences
 
-= link_to "Back to #{@level.name}", @level
+%table
+  %tr
+    %th English
+    %th Foreign
+    %th
+    %th
+    %th
+
+  - @level.sentences.each do |sentence|
+    %tr
+      %td= sentence.english
+      %td= sentence.foreign
+      -#%td= link_to 'Show', [@level, sentence]
+      %td= link_to 'Edit', edit_level_sentence_path(@level, sentence)
+      %td= link_to 'Destroy', [@level, sentence], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Back to all Levels', levels_path
 \|
-= link_to 'Edit', edit_level_sentence_path(@level, @sentence)
+= link_to 'Edit Level', edit_level_path(@level)
+\|
+= link_to 'Test', test_level_path(@level)
+\|
+= link_to 'New Sentence', new_level_sentence_path(@level)

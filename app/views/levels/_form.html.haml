@@ -9,5 +9,8 @@
   .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :is_vocab, 'Vocab'
+    = f.check_box :is_vocab
   .actions
     = f.submit 'Save'

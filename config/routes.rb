@@ -3,6 +3,8 @@ Lingo::Application.routes.draw do
   resources :levels do
     resources :sentences
 
+    resources :vocabs, :path => 'vocab'
+
     member do
       get 'test'
     end

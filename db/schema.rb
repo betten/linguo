@@ -10,17 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110408153106) do
+ActiveRecord::Schema.define(:version => 20110424005301) do
 
   create_table "levels", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "is_vocab"
   end
 
   create_table "sentences", :force => true do |t|
-    t.text     "english"
-    t.text     "foreign"
+    t.text      "english"
+    t.text      "foreign"
+    t.integer   "level_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+  end
+
+  create_table "vocabs", :force => true do |t|
+    t.string   "english"
+    t.string   "foreign"
     t.integer  "level_id"
     t.datetime "created_at"
     t.datetime "updated_at"

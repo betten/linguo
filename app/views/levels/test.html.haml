@@ -3,10 +3,10 @@
   level#test
 
 #sentences
-  - @level.sentences.each do |sentence|
+  - @testing.each do |test|
     .sentence
-      .english= sentence.english
-      .foreign= sentence.foreign
+      .english= test.english
+      .foreign= test.foreign
 
 %input#input{ :type => 'text' }
 
