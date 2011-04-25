@@ -12,7 +12,8 @@
       %td
         = level.name
         - if level.is_vocab
-          (vocab)
+          %i 
+            %b (vocab)
       %td= link_to 'Show', level
       %td= link_to 'Test', test_level_path(level)
       %td= link_to 'Edit', edit_level_path(level)
