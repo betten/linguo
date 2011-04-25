@@ -7,4 +7,8 @@ class Level < ActiveRecord::Base
     self.is_vocab
   end
 
+  def vocab
+    self.vocabs
+  end
+
 end
