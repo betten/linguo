@@ -22,13 +22,13 @@
     $j(function() {
       $j('#sentence_english').focus();
 
-      $j('#sentence_english').keyup(function(event) {
+      $j('#sentence_english').keypress(function(event) {
         if(event.keyCode === 13) {
           $j('#sentence_foreign').focus();
         }
       });
 
-      $j('#sentence_foreign').keyup(function(event) {
+      $j('#sentence_foreign').keypress(function(event) {
         if(event.keyCode === 13) {
           $j('.new_sentence, .edit_sentence').submit();
         }
