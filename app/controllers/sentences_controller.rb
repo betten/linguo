@@ -50,7 +50,7 @@ class SentencesController < ApplicationController
 
     respond_to do |format|
       if @sentence.save
-        format.html { redirect_to([@level, @sentence], :notice => 'Sentence was successfully created.') }
+        format.html { redirect_to(new_level_sentence_path(@level), :notice => 'Sentence was successfully created.') }
         format.xml  { render :xml => @sentence, :status => :created, :location => @sentence }
       else
         format.html { render :action => "new" }

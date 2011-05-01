@@ -14,3 +14,23 @@
     = f.text_area :foreign, :rows => 3
   .actions
     = f.submit 'Save'
+
+- content_for :javascripts do
+  :javascript
+    var $j = jQuery;
+
+    $j(function() {
+      $j('#sentence_english').focus();
+
+      $j('#sentence_english').keyup(function(event) {
+        if(event.keyCode === 13) {
+          $j('#sentence_foreign').focus();
+        }
+      });
+
+      $j('#sentence_foreign').keyup(function(event) {
+        if(event.keyCode === 13) {
+          $j('.new_sentence, .edit_sentence').submit();
+        }
+      });
+    });
