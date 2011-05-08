@@ -10,13 +10,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110508142642) do
+ActiveRecord::Schema.define(:version => 20110508145650) do
+
+  create_table "games", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "language_id"
+    t.integer  "level_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "languages", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "levels", :force => true do |t|
     t.string    "name"
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.boolean   "is_vocab"
+    t.integer   "language_id"
   end
 
   create_table "sentences", :force => true do |t|
