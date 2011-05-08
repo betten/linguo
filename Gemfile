@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.3'
 
 gem 'haml-rails'
+gem 'devise'
+gem 'cancan'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,4 +37,9 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'autotest'
   gem 'ruby-debug'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'webrat'
 end

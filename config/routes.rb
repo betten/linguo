@@ -1,5 +1,7 @@
 Lingo::Application.routes.draw do
 
+  devise_for :users
+
   resources :levels do
     resources :sentences
 
