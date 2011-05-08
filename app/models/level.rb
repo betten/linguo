@@ -1,5 +1,7 @@
 class Level < ActiveRecord::Base
 
+  belongs_to :language
+
   has_many :sentences
   has_many :vocabs
 
