@@ -2,12 +2,13 @@ class LevelsController < ApplicationController
   # GET /levels
   # GET /levels.xml
   def index
-    @levels = Level.all
+    redirect_to language_path(params[:language_id])
+    #@levels = Level.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @levels }
-    end
+    #respond_to do |format|
+      #format.html # index.html.erb
+      #format.xml  { render :xml => @levels }
+    #end
   end
 
   # GET /levels/1
@@ -41,6 +42,7 @@ class LevelsController < ApplicationController
   # GET /levels/new.xml
   def new
     @level = Level.new
+    @language = Language.find(params[:language_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,12 +53,15 @@ class LevelsController < ApplicationController
   # GET /levels/1/edit
   def edit
     @level = Level.find(params[:id])
+    @language = @level.language
   end
 
   # POST /levels
   # POST /levels.xml
   def create
     @level = Level.new(params[:level])
+    @language = Language.find(params[:language_id])
+    @level.language = @language
 
     respond_to do |format|
       if @level.save
@@ -73,6 +78,7 @@ class LevelsController < ApplicationController
   # PUT /levels/1.xml
   def update
     @level = Level.find(params[:id])
+    @language = @level.language
 
     respond_to do |format|
       if @level.update_attributes(params[:level])
@@ -89,10 +95,11 @@ class LevelsController < ApplicationController
   # DELETE /levels/1.xml
   def destroy
     @level = Level.find(params[:id])
+    @language = @level.language
     @level.destroy
 
     respond_to do |format|
-      format.html { redirect_to(levels_url) }
+      format.html { redirect_to(@language) }
       format.xml  { head :ok }
     end
   end

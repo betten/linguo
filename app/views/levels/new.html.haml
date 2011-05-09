@@ -1,5 +1,9 @@
+%p
+  %b Language:
+  = @language.name
+
 %h1 New level
 
 = render 'form'
 
-= link_to 'Back', levels_path
+= link_to 'Back', @language

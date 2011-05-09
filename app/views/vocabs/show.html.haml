@@ -1,7 +1,7 @@
-%p#notice= notice
-
 %p
-  %b Name:
+  %b Language:
+  = @level.language.name
+  %b Level:
   = @level.name
 
 %h1 Listing vocabs
@@ -19,12 +19,12 @@
       %td= vocab.english
       %td= vocab.foreign
       -#%td= link_to 'Show', [@level, vocab]
-      %td= link_to 'Edit', edit_level_vocab_path(@level, vocab)
-      %td= link_to 'Destroy', [@level, vocab], :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Edit', edit_vocab_path(vocab)
+      %td= link_to 'Destroy', vocab, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'Back to all Levels', levels_path
+= link_to 'Back to all Levels', @level.language
 \|
 = link_to 'Edit Level', edit_level_path(@level)
 \|

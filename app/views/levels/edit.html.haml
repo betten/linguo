@@ -1,7 +1,11 @@
+%p
+  %b Language
+  = @language.name
+
 %h1 Editing level
 
 = render 'form'
 
 = link_to 'Show', @level
 \|
-= link_to 'Back', levels_path
+= link_to 'Back', @language

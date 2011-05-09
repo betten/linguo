@@ -18,13 +18,13 @@
     %tr
       %td= sentence.english
       %td= sentence.foreign
-      %td= link_to 'Show', [@level, sentence]
-      %td= link_to 'Edit', edit_level_sentence_path(@level, sentence)
-      %td= link_to 'Destroy', [@level, sentence], :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', sentence
+      %td= link_to 'Edit', edit_sentence_path(@level, sentence)
+      %td= link_to 'Destroy', sentence, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'Back to all Levels', levels_path
+= link_to 'Back to all Levels', language_levels_path(@level.language)
 \|
 = link_to 'Edit Level', edit_level_path(@level)
 \|

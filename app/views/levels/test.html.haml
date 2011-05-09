@@ -1,6 +1,10 @@
 %p
+  %b Language:
+  = @language.name
+  %b Level:
   = @level.name
-  level#test
+
+%h1 Test
 
 #sentences
   - @testing.each do |test|
@@ -10,7 +14,7 @@
 
 %input#input{ :type => 'text' }
 
-.back= link_to 'Back to all levels', levels_path
+.back= link_to 'Back to all levels', @level.language
 
 - content_for :javascripts do
   = javascript_include_tag 'jquery-autogrowinput.js'

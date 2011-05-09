@@ -1,30 +1,31 @@
 class VocabsController < ApplicationController
 
-  before_filter do
+  before_filter :only => [:index, :new, :create] do
     @level = Level.find(params[:level_id])
   end
 
   # GET /vocabs
   # GET /vocabs.xml
   def index
-    @vocabs = Vocab.all
+    redirect_to @level
+    #@vocabs = Vocab.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @vocabs }
-    end
+    #respond_to do |format|
+      #format.html # index.html.erb
+      #format.xml  { render :xml => @vocabs }
+    #end
   end
 
-  # GET /vocabs/1
-  # GET /vocabs/1.xml
-  def show
-    @vocab = Vocab.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @vocab }
-    end
-  end
+  ## GET /vocabs/1
+  ## GET /vocabs/1.xml
+  #def show
+  #  @vocab = Vocab.find(params[:id])
+  #
+  #  respond_to do |format|
+  #    format.html # show.html.erb
+  #    format.xml  { render :xml => @vocab }
+  #  end
+  #end
 
   # GET /vocabs/new
   # GET /vocabs/new.xml
@@ -40,6 +41,7 @@ class VocabsController < ApplicationController
   # GET /vocabs/1/edit
   def edit
     @vocab = Vocab.find(params[:id])
+    @level = @vocab.level
   end
 
   # POST /vocabs
@@ -63,10 +65,11 @@ class VocabsController < ApplicationController
   # PUT /vocabs/1.xml
   def update
     @vocab = Vocab.find(params[:id])
+    @level = @vocab.level
 
     respond_to do |format|
       if @vocab.update_attributes(params[:vocab])
-        format.html { redirect_to([@level, @vocab], :notice => 'Vocab was successfully updated.') }
+        format.html { redirect_to(@level, :notice => 'Vocab was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,6 +82,7 @@ class VocabsController < ApplicationController
   # DELETE /vocabs/1.xml
   def destroy
     @vocab = Vocab.find(params[:id])
+    @level = @vocab.level
     @vocab.destroy
 
     respond_to do |format|
