@@ -1,4 +1,4 @@
-= form_for [@level, @vocab] do |f|
+= form_for path do |f|
   -if @vocab.errors.any?
     #error_explanation
       %h2= "#{pluralize(@vocab.errors.count, "error")} prohibited this vocab from being saved:"

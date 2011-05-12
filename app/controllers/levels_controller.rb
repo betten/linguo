@@ -53,7 +53,6 @@ class LevelsController < ApplicationController
   # GET /levels/1/edit
   def edit
     @level = Level.find(params[:id])
-    @language = @level.language
   end
 
   # POST /levels
@@ -61,6 +60,7 @@ class LevelsController < ApplicationController
   def create
     @level = Level.new(params[:level])
     @language = Language.find(params[:language_id])
+
     @level.language = @language
 
     respond_to do |format|

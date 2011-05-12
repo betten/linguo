@@ -1,13 +1,13 @@
 %p
   %b Language:
-  = @level.language.name
+  = @sentence.level.language.name
   %b Level:
-  = @level.name
+  = @sentence.level.name
 
 %h1 Editing sentence
 
-= render 'form'
+= render :partial => 'form', :locals => { :path => @sentence }
 
-= link_to "Back to #{@level.name}", @level
+= link_to "Back to #{@sentence.level.name}", @sentence.level
 \|
 = link_to 'Show', @sentence

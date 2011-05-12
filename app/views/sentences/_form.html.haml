@@ -1,4 +1,4 @@
-= form_for [@level, @sentence] do |f|
+= form_for path do |f|
   -if @sentence.errors.any?
     #error_explanation
       %h2= "#{pluralize(@sentence.errors.count, "error")} prohibited this sentence from being saved:"

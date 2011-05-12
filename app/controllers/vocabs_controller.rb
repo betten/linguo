@@ -41,7 +41,6 @@ class VocabsController < ApplicationController
   # GET /vocabs/1/edit
   def edit
     @vocab = Vocab.find(params[:id])
-    @level = @vocab.level
   end
 
   # POST /vocabs

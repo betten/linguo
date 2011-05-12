@@ -41,7 +41,6 @@ class SentencesController < ApplicationController
   # GET /sentences/1/edit
   def edit
     @sentence = Sentence.find(params[:id])
-    @level = @sentence.level
   end
 
   # POST /sentences

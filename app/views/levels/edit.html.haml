@@ -1,11 +1,11 @@
 %p
   %b Language
-  = @language.name
+  = @level.language.name
 
 %h1 Editing level
 
-= render 'form'
+= render :partial => 'form', :locals => { :path => @level }
 
 = link_to 'Show', @level
 \|
-= link_to 'Back', @language
+= link_to 'Back', @level.language
