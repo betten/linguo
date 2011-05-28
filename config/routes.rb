@@ -2,14 +2,21 @@ Lingo::Application.routes.draw do
 
   devise_for :users
 
-  resources :languages, :shallow => true  do
-    resources :levels do
-      resources :sentences
+  namespace "admin" do
+    resources :languages, :shallow => true  do
+      resources :levels do
+        resources :sentences
+        resources :vocabs, :path => 'vocab'
+      end
+    end
+  end
 
-      resources :vocabs, :path => 'vocab'
+  match '/games' => 'games#index', :as => 'games'
 
+  resources :game, :except => [:edit, :update] do
+    resources :level, :only => [:show] do
       member do
-        get 'test'
+        get 'challenge'
       end
     end
   end
@@ -63,7 +70,7 @@ Lingo::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "languages#index"
+  root :to => "game#home"
 
   # See how all your routes lay out with "rake routes"
 
