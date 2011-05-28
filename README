@@ -11,4 +11,4 @@ create a new game
 /games - my games
 /games/new - pick a language
 /games/id - levels / stats
-/games/id/challenge - test
+/games/id/levels/id/challenge - test
