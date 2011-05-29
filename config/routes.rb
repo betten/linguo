@@ -14,7 +14,7 @@ Lingo::Application.routes.draw do
     end
   end
 
-  match '/games' => 'games#index', :as => 'games'
+  match '/games' => 'game#index', :as => 'games'
 
   resources :game, :except => [:edit, :update] do
     resources :level, :only => [:show] do
