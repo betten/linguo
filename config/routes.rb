@@ -5,6 +5,9 @@ Lingo::Application.routes.draw do
   namespace "admin" do
     resources :languages, :shallow => true  do
       resources :levels do
+        member do
+          get 'test'
+        end
         resources :sentences
         resources :vocabs, :path => 'vocab'
       end
