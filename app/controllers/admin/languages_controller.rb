@@ -71,6 +71,12 @@ class Admin::LanguagesController < Admin::AdminController
   end
 
   def update_level_numbers
+    params[:ids].each_with_index do |id, index|
+      level = Level.find(id)
+      level.number = index + 1
+      level.save
+    end
+    render :nothing => true
   end
 
   # DELETE /languages/1

@@ -4,6 +4,9 @@ Lingo::Application.routes.draw do
 
   namespace "admin" do
     resources :languages, :shallow => true  do
+      member do
+        post 'update_level_numbers'
+      end
       resources :levels do
         member do
           get 'test'

@@ -4,15 +4,20 @@
 
 %h1 Listing levels
 
-%table
+%table#levels
   %tr
+    %th 
     %th Name
     %th
     %th
     %th
 
-  - @language.levels.each do |level|
-    %tr
+  - @language.levels.sort.each do |level|
+    %tr.level{ :id => level.id }
+      %td
+        %b
+          Level
+          %span.number= level.number
       %td
         = level.name
         - if level.is_vocab
@@ -31,3 +36,24 @@
 \|
 = link_to 'New Level', new_admin_language_level_path(@language)
 
+:javascript
+  $(function() {
+    $('#levels').sortable({
+      items: '.level',
+      update: function(event, ui) {
+        var order = $('.level').map(function() {
+          return $(this).attr('id');
+        }).get();
+        $.ajax({
+          type: 'post',
+          url: '#{update_level_numbers_admin_language_path(@language)}',
+          data: { ids: order },
+          success: function() {
+            $('.level').each(function(index) {
+              $(this).find('.number').text(index + 1);
+            });
+          }
+        });
+      }
+    });
+  });
