@@ -8,7 +8,7 @@ Lingo::Application.routes.draw do
         member do
           get 'test'
         end
-        resources :sentences
+        resources :sentences, :except => [:show]
         resources :vocabs, :path => 'vocab'
       end
     end

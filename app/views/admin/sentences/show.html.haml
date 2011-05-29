@@ -19,15 +19,15 @@
       %td= sentence.english
       %td= sentence.foreign
       -#%td= link_to 'Show', [@level, sentence]
-      %td= link_to 'Edit', edit_sentence_path(sentence)
-      %td= link_to 'Destroy', sentence, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Edit', edit_admin_sentence_path(sentence)
+      %td= link_to 'Destroy', ['admin', sentence], :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'Back to all Levels', @level.language
+= link_to 'Back to all Levels', ['admin', @level.language]
 \|
-= link_to 'Edit Level', edit_level_path(@level)
+= link_to 'Edit Level', edit_admin_level_path(@level)
 \|
-= link_to 'Test', test_level_path(@level)
+= link_to 'Test', test_admin_level_path(@level)
 \|
-= link_to 'New Sentence', new_level_sentence_path(@level)
+= link_to 'New Sentence', new_admin_level_sentence_path(@level)

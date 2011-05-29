@@ -6,8 +6,8 @@
 
 %h1 Editing sentence
 
-= render :partial => 'form', :locals => { :path => @sentence }
+= render :partial => 'form', :locals => { :path => ['admin', @sentence] }
 
-= link_to "Back to #{@sentence.level.name}", @sentence.level
+= link_to "Back to #{@sentence.level.name}", ['admin', @sentence.level]
 \|
-= link_to 'Show', @sentence
+= link_to 'Show', ['admin', @sentence]

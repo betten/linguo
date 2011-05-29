@@ -51,7 +51,7 @@ class Admin::SentencesController < ApplicationController
 
     respond_to do |format|
       if @sentence.save
-        format.html { redirect_to(new_level_sentence_path(@level), :notice => 'Sentence was successfully created.') }
+        format.html { redirect_to(new_admin_level_sentence_path(@level), :notice => 'Sentence was successfully created.') }
         format.xml  { render :xml => @sentence, :status => :created, :location => @sentence }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class Admin::SentencesController < ApplicationController
 
     respond_to do |format|
       if @sentence.update_attributes(params[:sentence])
-        format.html { redirect_to(@level, :notice => 'Sentence was successfully updated.') }
+        format.html { redirect_to(['admin', @level], :notice => 'Sentence was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,7 +85,7 @@ class Admin::SentencesController < ApplicationController
     @sentence.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@level) }
+      format.html { redirect_to(['admin', @level]) }
       format.xml  { head :ok }
     end
   end
