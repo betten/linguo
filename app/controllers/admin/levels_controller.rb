@@ -1,5 +1,4 @@
-class Admin::LevelsController < ApplicationController
-  authorize_resource
+class Admin::LevelsController < Admin::AdminController
 
   # GET /levels
   # GET /levels.xml

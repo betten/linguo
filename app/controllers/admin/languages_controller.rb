@@ -1,5 +1,4 @@
-class Admin::LanguagesController < ApplicationController
-  authorize_resource
+class Admin::LanguagesController < Admin::AdminController
 
   # GET /languages
   # GET /languages.xml

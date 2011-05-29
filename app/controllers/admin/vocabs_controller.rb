@@ -1,5 +1,4 @@
-class Admin::VocabsController < ApplicationController
-  authorize_resource
+class Admin::VocabsController < Admin::AdminController
 
   before_filter :only => [:index, :new, :create] do
     @level = Level.find(params[:level_id])
