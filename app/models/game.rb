@@ -10,6 +10,13 @@ class Game < ActiveRecord::Base
     self.level
   end
 
+  def on_level
+  end
+
+  def total_levels
+    self.language.levels.count
+  end
+
   protected
 
   def set_current_level_if_none
