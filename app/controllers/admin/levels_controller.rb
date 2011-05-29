@@ -1,4 +1,4 @@
-class LevelsController < ApplicationController
+class Admin::LevelsController < ApplicationController
   # GET /levels
   # GET /levels.xml
   def index

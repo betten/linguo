@@ -1,4 +1,4 @@
-class VocabsController < ApplicationController
+class Admin::VocabsController < ApplicationController
 
   before_filter :only => [:index, :new, :create] do
     @level = Level.find(params[:level_id])

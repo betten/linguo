@@ -1,4 +1,4 @@
-class SentencesController < ApplicationController
+class Admin::SentencesController < ApplicationController
 
   before_filter :only => [:index, :new, :create]  do
     @level = Level.find(params[:level_id])
