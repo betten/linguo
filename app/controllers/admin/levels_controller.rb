@@ -2,7 +2,7 @@ class Admin::LevelsController < ApplicationController
   # GET /levels
   # GET /levels.xml
   def index
-    redirect_to language_path(params[:language_id])
+    redirect_to admin_language_path(params[:language_id])
     #@levels = Level.all
 
     #respond_to do |format|
@@ -19,9 +19,9 @@ class Admin::LevelsController < ApplicationController
     respond_to do |format|
       format.html {
         if @level.is_vocab?
-          render 'vocabs/show'
+          render 'admin/vocabs/show'
         else
-          render 'sentences/show'
+          render 'admin/sentences/show'
         end
       }
       format.xml  { render :xml => @level }
@@ -65,7 +65,7 @@ class Admin::LevelsController < ApplicationController
 
     respond_to do |format|
       if @level.save
-        format.html { redirect_to(@level, :notice => 'Level was successfully created.') }
+        format.html { redirect_to(['admin', @level], :notice => 'Level was successfully created.') }
         format.xml  { render :xml => @level, :status => :created, :location => @level }
       else
         format.html { render :action => "new" }
@@ -82,7 +82,7 @@ class Admin::LevelsController < ApplicationController
 
     respond_to do |format|
       if @level.update_attributes(params[:level])
-        format.html { redirect_to(@level, :notice => 'Level was successfully updated.') }
+        format.html { redirect_to(['admin', @level], :notice => 'Level was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -99,7 +99,7 @@ class Admin::LevelsController < ApplicationController
     @level.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@language) }
+      format.html { redirect_to(['admin', @language]) }
       format.xml  { head :ok }
     end
   end

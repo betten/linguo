@@ -4,6 +4,6 @@
 
 %h1 New level
 
-= render :partial => 'form', :locals => { :path => [@language, @level] }
+= render :partial => 'form', :locals => { :path => ['admin', @language, @level] }
 
-= link_to 'Back', @language
+= link_to 'Back', ['admin', @language]

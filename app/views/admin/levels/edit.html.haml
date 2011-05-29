@@ -4,8 +4,8 @@
 
 %h1 Editing level
 
-= render :partial => 'form', :locals => { :path => @level }
+= render :partial => 'form', :locals => { :path => ['admin', @level] }
 
-= link_to 'Show', @level
+= link_to 'Show', ['admin', @level]
 \|
-= link_to 'Back', @level.language
+= link_to 'Back', ['admin', @level.language]

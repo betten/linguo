@@ -14,7 +14,7 @@
 
 %input#input{ :type => 'text' }
 
-.back= link_to 'Back to all levels', @level.language
+.back= link_to 'Back to all levels', ['admin', @level.language]
 
 - content_for :javascripts do
   = javascript_include_tag 'jquery-autogrowinput.js'
