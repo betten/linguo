@@ -1,4 +1,6 @@
 class Admin::LevelsController < ApplicationController
+  authorize_resource
+
   # GET /levels
   # GET /levels.xml
   def index

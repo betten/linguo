@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :games
 
+  def admin?
+    self.admin
+  end
+
 end

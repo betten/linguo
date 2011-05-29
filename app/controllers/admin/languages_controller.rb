@@ -1,4 +1,6 @@
 class Admin::LanguagesController < ApplicationController
+  authorize_resource
+
   # GET /languages
   # GET /languages.xml
   def index
