@@ -1,6 +1,7 @@
 %h1 My Games
 
 %table
-  - @games.each do |game|
+  - current_user.games.each do |game|
     %tr
       %td= link_to game.language.name, game
+      %td= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete

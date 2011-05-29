@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   belongs_to :language
   belongs_to :level
 
-  before_create :set_current_level_if_none
+  #before_create :set_current_level_if_none
 
   def current_level
     set_current_level_if_none

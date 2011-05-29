@@ -1,2 +1,9 @@
-%h1 Game#new
-%p Find me in app/views/game/new.html.haml
+%h1 New Game
+
+%h2 Select your quest:
+- @languages.each do |language|
+  = form_for :game, :url => '/game' do |f|
+    .field
+      = f.hidden_field :language_id, { :value => language.id }
+    .actions
+      = f.submit language.name
