@@ -29,7 +29,8 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can :manage, Game do |game|
+      can :create, Game
+      can [:read, :destroy], Game do |game|
         game.try(:user) == user
       end
     end
