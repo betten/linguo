@@ -66,6 +66,7 @@ class Admin::LevelsController < Admin::AdminController
 
     respond_to do |format|
       if @level.save
+        @language.update_level_numbers
         format.html { redirect_to(['admin', @level], :notice => 'Level was successfully created.') }
         format.xml  { render :xml => @level, :status => :created, :location => @level }
       else
@@ -95,9 +96,10 @@ class Admin::LevelsController < Admin::AdminController
   # DELETE /levels/1
   # DELETE /levels/1.xml
   def destroy
-    @level = Level.find(params[:id])
-    @language = @level.language
-    @level.destroy
+    level = Level.find(params[:id])
+    level.destroy
+    @language = level.language
+    @language.update_level_numbers
 
     respond_to do |format|
       format.html { redirect_to(['admin', @language]) }

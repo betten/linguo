@@ -70,6 +70,9 @@ class Admin::LanguagesController < Admin::AdminController
     end
   end
 
+  def update_level_numbers
+  end
+
   # DELETE /languages/1
   # DELETE /languages/1.xml
   def destroy
