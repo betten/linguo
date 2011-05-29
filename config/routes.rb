@@ -9,7 +9,7 @@ Lingo::Application.routes.draw do
           get 'test'
         end
         resources :sentences, :except => [:show]
-        resources :vocabs, :path => 'vocab'
+        resources :vocabs, :except => [:show], :path => 'vocab'
       end
     end
   end

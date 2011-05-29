@@ -6,8 +6,8 @@
 
 %h1 Editing vocab
 
-= render :partial => 'form', :locals => { :path => @vocab }
+= render :partial => 'form', :locals => { :path => ['admin', @vocab] }
 
-= link_to "Back to #{@vocab.level.name}", @vocab.level
+= link_to "Back to #{@vocab.level.name}", ['admin', @vocab.level]
 \|
-= link_to 'Show', @vocab
+= link_to 'Show', ['admin', @vocab]

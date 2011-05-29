@@ -51,7 +51,7 @@ class Admin::VocabsController < ApplicationController
 
     respond_to do |format|
       if @vocab.save
-        format.html { redirect_to(new_level_vocab_path(@level), :notice => 'Vocab was successfully created.') }
+        format.html { redirect_to(new_admin_level_vocab_path(@level), :notice => 'Vocab was successfully created.') }
         format.xml  { render :xml => @vocab, :status => :created, :location => @vocab }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class Admin::VocabsController < ApplicationController
 
     respond_to do |format|
       if @vocab.update_attributes(params[:vocab])
-        format.html { redirect_to(@level, :notice => 'Vocab was successfully updated.') }
+        format.html { redirect_to(['admin', @level], :notice => 'Vocab was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,7 +85,7 @@ class Admin::VocabsController < ApplicationController
     @vocab.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@level) }
+      format.html { redirect_to(['admin', @level]) }
       format.xml  { head :ok }
     end
   end

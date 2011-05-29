@@ -19,15 +19,15 @@
       %td= vocab.english
       %td= vocab.foreign
       -#%td= link_to 'Show', [@level, vocab]
-      %td= link_to 'Edit', edit_vocab_path(vocab)
-      %td= link_to 'Destroy', vocab, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Edit', edit_admin_vocab_path(vocab)
+      %td= link_to 'Destroy', ['admin', vocab], :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'Back to all Levels', @level.language
+= link_to 'Back to all Levels', ['admin', @level.language]
 \|
-= link_to 'Edit Level', edit_level_path(@level)
+= link_to 'Edit Level', edit_admin_level_path(@level)
 \|
-= link_to 'Test', test_level_path(@level)
+= link_to 'Test', test_admin_level_path(@level)
 \|
-= link_to 'New Vocab', new_level_vocab_path(@level)
+= link_to 'New Vocab', new_admin_level_vocab_path(@level)
