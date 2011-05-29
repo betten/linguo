@@ -1,2 +1,6 @@
-%h1 Game#index
-%p Find me in app/views/game/index.html.haml
+%h1 My Games
+
+%table
+  - @games.each do |game|
+    %tr
+      %td= link_to game.language.name, game
