@@ -42,4 +42,5 @@ group :test, :development do
   gem 'launchy'
   gem 'capybara'
   gem 'webrat'
+  gem 'factory_girl_rails'
 end
