@@ -5,14 +5,6 @@ class Level < ActiveRecord::Base
   has_many :sentences
   has_many :vocabs
 
-  after_create do
-    self.language.update_level_numbers
-  end
-
-  after_destroy do
-    self.language.update_level_numbers
-  end
-
   def is_vocab?
     self.is_vocab
   end
@@ -28,5 +20,5 @@ class Level < ActiveRecord::Base
     return -1 if !other.number
     self.number <=> other.number
   end
-  
+
 end

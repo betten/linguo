@@ -9,11 +9,9 @@ describe Language do
 
     context "one or more of the languages levels has a nil number" do
       before do
-        @language.levels << Factory(:level, :number => 5)
-        @language.levels << Factory(:level)
-        @language.levels << Factory(:level, :number => 2)
-        @language.levels << Factory(:level)
-        @language.levels << Factory(:level, :number => 8)
+        [5, nil, 2, nil, 8].each do |n|
+          @language.levels << Factory(:level, :language => @language, :number => n)
+        end
       end
 
       it "should set level numbers for all levels" do
@@ -30,7 +28,7 @@ describe Language do
     context "language level numbers are unsorted" do
       before do
         (1..10).to_a.sort_by{ rand }.each do |n|
-          @language.levels << Factory(:level, :number => n)
+          @language.levels << Factory(:level, :language => @language, :number => n)
         end
       end
 
@@ -48,7 +46,7 @@ describe Language do
     context "language level numbers are already sorted 1..n" do
       before do
         (1..10).to_a.each do |n|
-          @language.levels << Factory(:level, :number => n)
+          @language.levels << Factory(:level, :language => @language, :number => n)
         end
       end
 
