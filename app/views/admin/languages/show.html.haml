@@ -18,16 +18,16 @@
         - if level.is_vocab
           %i 
             %b (vocab)
-      %td= link_to 'Show', level
-      %td= link_to 'Test', test_level_path(level)
-      %td= link_to 'Edit', edit_level_path(level)
-      %td= link_to 'Destroy', level, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', ['admin', level]
+      %td= link_to 'Test', test_admin_level_path(level)
+      %td= link_to 'Edit', edit_admin_level_path(level)
+      %td= link_to 'Destroy', ['admin', level], :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'Back to all Languages', languages_path
+= link_to 'Back to all Languages', admin_languages_path
 \|
-= link_to 'Edit Language', edit_language_path(@languages)
+= link_to 'Edit Language', edit_admin_language_path(@languages)
 \|
-= link_to 'New Level', new_language_level_path(@language)
+= link_to 'New Level', new_admin_language_level_path(@language)
 

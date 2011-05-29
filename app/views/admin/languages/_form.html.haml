@@ -1,4 +1,4 @@
-= form_for @language do |f|
+= form_for ['admin', @language] do |f|
   -if @language.errors.any?
     #error_explanation
       %h2= "#{pluralize(@language.errors.count, "error")} prohibited this language from being saved:"

@@ -10,10 +10,10 @@
   - @languages.each do |language|
     %tr
       %td= language.name
-      %td= link_to 'Show', language
-      %td= link_to 'Edit', edit_language_path(language)
-      %td= link_to 'Destroy', language, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', ['admin', language]
+      %td= link_to 'Edit', edit_admin_language_path(language)
+      %td= link_to 'Destroy', ['admin', language], :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Language', new_language_path
+= link_to 'New Language', new_admin_language_path
