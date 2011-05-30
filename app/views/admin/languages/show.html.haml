@@ -5,13 +5,6 @@
 %h1 Listing levels
 
 %table#levels
-  %tr
-    %th 
-    %th Name
-    %th
-    %th
-    %th
-
   - @language.levels.sort.each do |level|
     %tr.level{ :id => level.id }
       %td
