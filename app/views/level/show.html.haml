@@ -1,2 +1,12 @@
-%h1 Level#show
-%p Find me in app/views/level/show.html.haml
+%h2= @game.name
+%h1 Level #{@level.number}
+%h2= @level.name
+
+- if @level.is_vocab?
+  = render :partial => 'vocabs'
+- else
+  = render :partial => 'sentences'
+
+= link_to 'Back to all levels', @game
+\|
+= link_to 'Challenge', challenge_game_level_path(@game, @level)

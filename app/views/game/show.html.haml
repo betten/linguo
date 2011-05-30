@@ -1,2 +1,17 @@
-%h1 Game#show
-%p Find me in app/views/game/show.html.haml
+%h1= @game.name
+
+%table
+  - @game.levels.sort.each do |level|
+    %tr.level{ :id => level.id }
+      %td
+        %b Level #{level.number}
+      %td
+        = level.name
+        -#- if level.is_vocab
+          %i 
+            %b (vocab)
+      %td= link_to 'Show', [@game, level]
+      %td= link_to 'Challenge', challenge_game_level_path(@game, level)
+
+%br
+

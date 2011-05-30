@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th English
+    %th Foreign
+
+  - @level.sentences.each do |sentence|
+    %tr
+      %td= sentence.english
+      %td= sentence.foreign

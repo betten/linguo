@@ -1,0 +1,11 @@
+%table
+  %tr
+    %th English
+    %th Foreign
+
+  - @level.vocabs.each do |vocab|
+    %tr
+      %td= vocab.english
+      %td= vocab.foreign
+
+
