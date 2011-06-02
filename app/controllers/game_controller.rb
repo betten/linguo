@@ -12,7 +12,7 @@ class GameController < ApplicationController
       redirect_to games_path
     end
 
-    @languages = Language.all
+    render :layout => false
   end
 
   def index

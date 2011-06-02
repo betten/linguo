@@ -1,2 +1,35 @@
-%h1 Game#home
-%p Find me in app/views/game/home.html.haml
+!!!
+%html
+  %head
+    %title Linguo
+    = stylesheet_link_tag :all
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", :type => "text/javascript"}
+    = csrf_meta_tag
+  %body
+
+    #background
+
+    #content
+      #header.container
+        .left
+          #logo Linguo
+        .right
+          %a#signin{ :href => new_user_session_path } signin
+          %p#notice.notice= notice
+          %p#alert.alert= alert
+
+      #tagline
+        learn a language by playing it - score points, earn badges, level up, and learn by doing
+
+      #main.container
+        %a#newgame{ :href => new_user_registration_path } new game
+
+
+  :javascript
+    $(function() {
+      $(window).resize(function() {
+        var minheight = 840;
+        var bottom = $(window).height() < minheight ? $(window).height() - minheight : 0;
+        $('#background').css({ bottom: bottom });
+      }).resize();
+    });
