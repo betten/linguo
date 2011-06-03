@@ -2,7 +2,7 @@
 %html
   %head
     %title Linguo
-    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'scaffold', 'linguo'
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", :type => "text/javascript"}
     = javascript_include_tag :defaults
     = yield :javascripts
@@ -10,17 +10,19 @@
   %body
 
     #header
+      .links
+        - if user_signed_in?
+          = link_to 'My Games', games_path
+          = link_to 'New Game', new_game_path
+          = link_to 'Admin', admin_languages_path if current_user.admin?
+          = link_to 'Signout', destroy_user_session_path
+        - else
+          = link_to 'Signin', new_user_session_path
+          = link_to 'Signup', new_user_registration_path
       %h1 Linguo
-      - if user_signed_in?
-        = link_to 'My Games', games_path
-        = link_to 'New Game', new_game_path
-        = link_to 'Admin', admin_languages_path if current_user.admin?
-        = link_to 'Signout', destroy_user_session_path
-      - else
-        = link_to 'Signin', new_user_session_path
-        = link_to 'Signup', new_user_registration_path
 
     %p#notice.notice= notice
     %p#alert.alert= alert
 
-    = yield
+    #content
+      = yield

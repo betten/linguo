@@ -1,0 +1,21 @@
+body {
+  background: url(/images/bg.png) repeat-x #f4fcff;
+  margin: 0; }
+
+#header {
+  background: url(/images/header-bg.png) repeat-x;
+  height: 50px; }
+  #header h1 {
+    color: white;
+    margin: 0;
+    padding: 10px; }
+  #header .links {
+    float: right;
+    padding: 10px; }
+    #header .links a {
+      color: white;
+      margin-left: 8px; }
+
+#content {
+  margin: 0 auto;
+  width: 960px; }
