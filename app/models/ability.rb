@@ -31,7 +31,13 @@ class Ability
     else
       can :create, Game
       can [:read, :destroy], Game do |game|
-        game.try(:user) == user
+        game.user == user
+      end
+      can :read, Level do |level, game|
+        game.user == user and game.levels.include?(level)
+      end
+      can :challenge, Level do |level, game|
+        level.number <= game.current_level.number and game.user == user
       end
     end
   end
