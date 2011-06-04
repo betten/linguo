@@ -29,7 +29,7 @@ class LevelController < ApplicationController
       end
     end
 
-    redirect_to games_path
+    redirect_to @game
   end
 
   protected
