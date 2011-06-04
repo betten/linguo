@@ -1,6 +1,50 @@
 require 'spec_helper'
 
 describe Game do
+
+  describe "next level" do
+    before do
+      @levels = [
+        Factory(:level, :number => 1), 
+        Factory(:level, :number => 2), 
+        Factory(:level, :number => 3)
+      ]
+      @game = Factory(:game, :language => Factory(:language, :levels => @levels))
+      @game.stub_chain(:language, :levels, :where).with(hash_including(:number)) { |hash|
+        @levels.find_all{ |level| level.number == hash[:number] }
+      }
+    end
+
+    describe "has_next_level" do
+      it "should return true if there is a next level" do
+        @game.level = @levels[1]
+        @game.has_next_level?.should be
+      end
+
+      it "should return false if there is not a next level" do
+        @game.level = @levels.last
+        @game.has_next_level?.should_not be
+      end
+
+    end
+
+    describe "goto_next_level" do
+      it "should set the current level to the next level by number" do
+        @game.level = @levels[1]
+        lambda { 
+          @game.goto_next_level 
+        }.should change(@game, :level).from(@levels[1]).to(@levels[2])
+      end
+
+      it "should maintain the current level if there is no next level" do
+        @game.level = @levels.last
+        lambda { 
+          @game.goto_next_level 
+        }.should_not change(@game, :level)
+      end
+    end
+  end
+
   describe "current_level" do
     before do
       @language = Factory(:language, :levels => [Factory(:level)])

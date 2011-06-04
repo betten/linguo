@@ -3,7 +3,6 @@ class Game < ActiveRecord::Base
   belongs_to :language
   belongs_to :level
 
-
   def current_level
     set_current_level_if_none
     self.level
@@ -11,6 +10,18 @@ class Game < ActiveRecord::Base
 
   def current_level?
     self.level.present?
+  end
+
+  def has_next_level?
+    n = self.level.number.to_i + 1
+    self.language.levels.where(:number => n).present?
+  end
+
+  def goto_next_level
+    return false unless self.has_next_level?
+    n = self.level.number.to_i + 1
+    self.level = self.language.levels.where(:number => n).first
+    self.save
   end
 
   def total_levels
