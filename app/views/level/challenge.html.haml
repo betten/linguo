@@ -7,10 +7,11 @@
       .test
         .english= test.english
         .foreign= test.foreign
+
   %input#input{ :type => 'text' }
 
-.success
-  = button_to 'Success!', success_game_level_path(@game, @level), :method => 'post'
+  #success
+    = button_to 'Success!', success_game_level_path(@game, @level), :method => 'post'
 
 - content_for :stylesheets do
   = stylesheet_link_tag 'challenge'
@@ -44,7 +45,7 @@
       comfortZone: 10,
       minWidth: 300
     });
-    $('.success').hide();
+    $('#success').hide();
     runTest();
   });
 
@@ -66,7 +67,7 @@
             }
             else {
               alert('success!');
-              $('.success').show();
+              $('#success').show();
             }
             $(this).unbind('keypress');
             runTest();
