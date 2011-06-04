@@ -37,7 +37,7 @@ class Ability
         game.user == user and game.levels.include?(level)
       end
       can :challenge, Level do |level, game|
-        level.number <= game.current_level.number and game.user == user
+        game.current_level? and level.number <= game.current_level.number and game.user == user
       end
     end
   end

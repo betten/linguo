@@ -30,6 +30,7 @@ class GameController < ApplicationController
     @game.user = current_user
 
     if @game.save
+      @game.set_current_level_if_none
       redirect_to @game, :notice => 'New game successfully created.'
     else
       render :action => "new"
