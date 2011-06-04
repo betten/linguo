@@ -11,7 +11,8 @@
           %i 
             %b (vocab)
       %td= link_to 'Show', [@game, level]
-      %td= link_to 'Challenge', challenge_game_level_path(@game, level), :confirm => challenge_confirmation_message
+      - if can? :challenge, level, @game
+        %td= link_to 'Challenge', challenge_game_level_path(@game, level), :confirm => challenge_confirmation_message
 
 %br
 

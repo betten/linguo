@@ -4,7 +4,7 @@ class LevelController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @level = Level.find(params[:id])
-    authorize! :show, @level
+    authorize! :show, @level, @game
   end
 
   def challenge
@@ -17,7 +17,7 @@ class LevelController < ApplicationController
       @testing = @level.sentences
     end
 
-    authorize! :challenge, Level
+    authorize! :challenge, @level, @game
   end
 
 end
