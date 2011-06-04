@@ -10,20 +10,24 @@
     = csrf_meta_tag
   %body
 
-    #header
-      .links
-        - if user_signed_in?
-          = link_to 'My Games', games_path
-          = link_to 'New Game', new_game_path
-          = link_to 'Admin', admin_languages_path if current_user.admin?
-          = link_to 'Signout', destroy_user_session_path
-        - else
-          = link_to 'Signin', new_user_session_path
-          = link_to 'Signup', new_user_registration_path
-      %h1 Linguo
+    #container
 
-    #content
-      %p#notice.notice= notice
-      %p#alert.alert= alert
+      #header
+        .links
+          - if user_signed_in?
+            = link_to 'My Games', games_path
+            = link_to 'New Game', new_game_path
+            = link_to 'Admin', admin_languages_path if current_user.admin?
+            = link_to 'Signout', destroy_user_session_path
+          - else
+            = link_to 'Signin', new_user_session_path
+            = link_to 'Signup', new_user_registration_path
+        %h1 Linguo
 
-      = yield
+      #content
+        %p#notice.notice= notice
+        %p#alert.alert= alert
+
+        = yield
+
+      #footer

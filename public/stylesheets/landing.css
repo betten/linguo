@@ -66,3 +66,9 @@ body {
   text-align: center;
   text-decoration: none;
   width: 406px; }
+
+#alert {
+  color: red; }
+
+#notice {
+  color: green; }
