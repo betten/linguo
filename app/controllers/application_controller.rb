@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = "Access denied."
-    redirect_to root_url
+    if user_signed_in?
+      redirect_to games_path
+    else
+      redirect_to root_url
+    end
   end
 
 end
