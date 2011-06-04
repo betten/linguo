@@ -23,6 +23,7 @@ Lingo::Application.routes.draw do
     resources :level, :only => [:show] do
       member do
         get 'challenge'
+        post 'success'
       end
     end
   end

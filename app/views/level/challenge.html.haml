@@ -9,7 +9,8 @@
         .foreign= test.foreign
   %input#input{ :type => 'text' }
 
-.back= link_to 'Success! Back to all levels', @game
+.success
+  = button_to 'Success!', success_game_level_path(@game, @level), :method => 'post'
 
 - content_for :stylesheets do
   = stylesheet_link_tag 'challenge'
@@ -43,7 +44,7 @@
       comfortZone: 10,
       minWidth: 300
     });
-    $('.back').hide();
+    $('.success').hide();
     runTest();
   });
 
@@ -65,7 +66,7 @@
             }
             else {
               alert('success!');
-              $('.back').show();
+              $('.success').show();
             }
             $(this).unbind('keypress');
             runTest();
