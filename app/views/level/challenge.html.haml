@@ -1,2 +1,83 @@
-%h1 Level#challenge
-%p Find me in app/views/level/challenge.html.haml
+%h1 CHALLENGE
+%h2 #{@game.name} - Level #{@level.number}
+
+#challenge
+  #tests
+    - @testing.each do |test|
+      .test
+        .english= test.english
+        .foreign= test.foreign
+  %input#input{ :type => 'text' }
+
+.back= link_to 'Back to all levels', @game
+
+- content_for :stylesheets do
+  = stylesheet_link_tag 'challenge'
+- content_for :javascripts do
+  = javascript_include_tag 'jquery-autogrowinput.js'
+
+:javascript
+  // http://yelotofu.com/2008/08/jquery-shuffle-plugin/
+  (function($){
+    $.fn.shuffle = function() {
+      return this.each(function(){
+        var items = $(this).children();
+        return (items.length)
+          ? $(this).html($.shuffle(items))
+          : this;
+      });
+    }
+   
+    $.shuffle = function(arr) {
+      for(
+        var j, x, i = arr.length; i;
+        j = parseInt(Math.random() * i),
+        x = arr[--i], arr[i] = arr[j], arr[j] = x
+      );
+      return arr;
+    }
+  })(jQuery);
+
+  $(function() {
+    $('#input').autoGrowInput({
+      comfortZone: 10,
+      minWidth: 300
+    });
+    $('.back').hide();
+    runTest();
+  });
+
+  var runTest = function() {
+    $('#tests').shuffle();
+    var tests = $('.test');
+    tests.find('.foreign').hide();
+    tests.hide();
+    var current = tests.first();
+    current.show();
+    var failed = false;
+    $('#input').val('').focus().keypress(function(e) {
+      if(e.keyCode === 13) {
+        if(current.find('.foreign').text() === $(this).val()) {
+          current = current.hide().next('.test');
+          if(!current.length) {
+            if(failed) {
+              alert('one or more tests were incorrect -- have another go');
+            }
+            else {
+              alert('success!');
+              $('.back').show();
+            }
+            $(this).unbind('keypress');
+            runTest();
+            return;
+          }
+          current.show();
+        }
+        else {
+          failed = true;
+          alert(current.find('.foreign').text());
+        }
+        $(this).val('').focus();
+      }
+    });
+  };

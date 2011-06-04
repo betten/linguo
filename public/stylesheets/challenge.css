@@ -1,0 +1,18 @@
+#challenge {
+  text-align: center; }
+
+#tests {
+  margin-bottom: 4px;
+  margin-top: 80px; }
+  #tests .test .english {
+    font-size: 30px;
+    line-height: 30px; }
+
+#input {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  font-size: 30px;
+  padding: 6px;
+  width: 300px; }
