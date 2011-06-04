@@ -4,4 +4,10 @@
   - current_user.games.each do |game|
     %tr
       %td= link_to game.language.name, game
+      %td
+        on level 
+        %b= game.level.number
+        of
+        %b= game.levels.count
+        %i (#{game.percent_complete} complete)
       %td= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete

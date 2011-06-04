@@ -36,6 +36,11 @@ class Game < ActiveRecord::Base
     self.language.levels
   end
 
+  def percent_complete
+    p = ((self.level.number.to_f - 1) / self.levels.count)*100
+    "#{p.floor}%"
+  end
+
   def set_current_level_if_none
     if self.level.blank? and self.language.present? and self.levels.any?
       self.level = self.levels.where(:number => 1).first
