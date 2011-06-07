@@ -8,14 +8,16 @@
 
 %table
   %tr
+    %th
     %th English
     %th Foreign
     %th
     %th
     %th
 
-  - @level.sentences.each do |sentence|
+  - @level.sentences.each_with_index do |sentence, index|
     %tr
+      %td= "#{index + 1}."
       %td= sentence.english
       %td= sentence.foreign
       -#%td= link_to 'Show', [@level, sentence]

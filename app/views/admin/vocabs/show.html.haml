@@ -8,14 +8,16 @@
 
 %table
   %tr
+    %th
     %th English
     %th Foreign
     %th
     %th
     %th
 
-  - @level.vocabs.each do |vocab|
+  - @level.vocabs.each_with_index do |vocab, index|
     %tr
+      %td= "#{index + 1}."
       %td= vocab.english
       %td= vocab.foreign
       -#%td= link_to 'Show', [@level, vocab]
