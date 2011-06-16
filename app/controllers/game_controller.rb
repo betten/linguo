@@ -22,7 +22,7 @@ class GameController < ApplicationController
   end
 
   def new
-    @languages = Language.all
+    @languages = Language.enabled
     @game = Game.new
   end
 
