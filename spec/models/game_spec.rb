@@ -47,7 +47,8 @@ describe Game do
 
   describe "current_level" do
     before do
-      @language = Factory(:language, :levels => [Factory(:level)])
+      @level = Factory(:level, :number => 1)
+      @language = Factory(:language, :levels => [@level])
     end
 
     it "should not set the current level if level is nil and the language has no levels" do
@@ -57,7 +58,8 @@ describe Game do
 
     it "should set the current level to the languages first level if no current level" do
       game = Factory(:game, :language => @language)
-      game.current_level.should == @language.levels.first
+      game.levels.should_receive(:where).and_return([@level])
+      game.current_level.should == @level
     end
 
     it "should return the current level if current level exists" do
