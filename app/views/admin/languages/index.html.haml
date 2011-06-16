@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th Enabled?
     %th Name
     %th
     %th
@@ -9,6 +10,11 @@
 
   - @languages.each do |language|
     %tr
+      %td
+        - if language.enabled?
+          &#10004;
+        - else
+          &#10007;
       %td= language.name
       %td= link_to 'Show', ['admin', language]
       %td= link_to 'Edit', edit_admin_language_path(language)
