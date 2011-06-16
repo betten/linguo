@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529135304) do
+ActiveRecord::Schema.define(:version => 20110616015528) do
 
   create_table "games", :force => true do |t|
     t.integer   "user_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110529135304) do
     t.string    "name"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.boolean   "enabled",    :default => false
   end
 
   create_table "levels", :force => true do |t|
