@@ -1,6 +1,10 @@
 %h1 CHALLENGE
 %h2 #{@game.name} - Level #{@level.number}
 
+#stats
+  %b.count
+  more to go
+
 #challenge
   #tests
     - @testing.each do |test|
@@ -57,6 +61,8 @@
     var current = tests.first();
     current.show();
     var failed = false;
+    var updateCount = function() { $('#stats .count').text(tests.length - $.inArray(current.get(0), tests)); };
+    updateCount();
     $('#input').val('').focus().keypress(function(e) {
       if(e.keyCode === 13) {
         if(current.find('.foreign').text() === $(this).val()) {
@@ -79,6 +85,7 @@
           failed = true;
           alert(current.find('.foreign').text());
         }
+        updateCount();
         $(this).val('').focus();
       }
     });
