@@ -4,6 +4,7 @@
 #stats
   %b.count
   more to go
+  %b.reset reset!
 
 #challenge
   #tests
@@ -55,38 +56,44 @@
 
   var runTest = function() {
     $('#tests').shuffle();
+
     var tests = $('.test');
     tests.find('.foreign').hide();
     tests.hide();
+
     var current = tests.first();
     current.show();
-    var failed = false;
+
+    var has_failed = false;
     var updateCount = function() { $('#stats .count').text(tests.length - $.inArray(current.get(0), tests)); };
     updateCount();
-    $('#input').val('').focus().keypress(function(e) {
-      if(e.keyCode === 13) {
-        if(current.find('.foreign').text() === $(this).val()) {
-          current = current.hide().next('.test');
-          if(!current.length) {
-            if(failed) {
-              alert('one or more tests were incorrect -- have another go');
-            }
-            else {
-              alert('success!');
-              $('#success').show();
-            }
-            $(this).unbind('keypress');
-            runTest();
-            return;
-          }
-          current.show();
-        }
-        else {
-          failed = true;
-          alert(current.find('.foreign').text());
-        }
-        updateCount();
-        $(this).val('').focus();
+
+    $('#input').val('').focus().unbind('keypress').keypress(function(e) {
+      if(e.keyCode !== 13) return;
+
+      var passed_current = current.find('.foreign').text() === $(this).val();
+
+      if(passed_current && has_failed) {
+        $('#stats .reset').show().delay(3000).fadeOut();
+        runTest();
+        return;
       }
+      else if(passed_current) {
+        current = current.hide().next('.test');
+        if(!current.length) {
+          alert('success!');
+          $('#success').show();
+          runTest();
+          return;
+        }
+        current.show();
+      }
+      else {
+        has_failed = true;
+        alert(current.find('.foreign').text());
+      }
+      updateCount();
+      $(this).val('').focus();
+
     });
   };

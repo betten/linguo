@@ -1,3 +1,9 @@
+#stats {
+  font-size: 20px; }
+  #stats .reset {
+    color: red;
+    display: none; }
+
 #challenge {
   text-align: center; }
 
